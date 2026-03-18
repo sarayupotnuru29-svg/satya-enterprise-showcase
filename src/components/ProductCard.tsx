@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 interface ProductCardProps {
   name: string;
@@ -10,7 +11,7 @@ const ProductCard = ({ name, description, image }: ProductCardProps) => (
   <motion.div
     whileHover={{ y: -8 }}
     transition={{ duration: 0.3 }}
-    className="bg-card rounded-xl overflow-hidden shadow-card hover:shadow-elevated transition-shadow duration-300 group"
+    className="bg-card rounded-xl overflow-hidden shadow-card hover:shadow-elevated transition-shadow duration-300 group flex flex-col"
   >
     <div className="aspect-square overflow-hidden">
       <img
@@ -20,9 +21,15 @@ const ProductCard = ({ name, description, image }: ProductCardProps) => (
         loading="lazy"
       />
     </div>
-    <div className="p-5">
+    <div className="p-5 flex flex-col flex-1">
       <h3 className="font-display text-xl font-semibold text-foreground mb-2">{name}</h3>
-      <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
+      <p className="text-muted-foreground text-sm leading-relaxed flex-1">{description}</p>
+      <Link
+        to={`/enquiry?product=${encodeURIComponent(name)}`}
+        className="mt-4 block text-center bg-secondary text-secondary-foreground py-2.5 rounded-lg font-body font-semibold text-sm hover:opacity-90 transition-opacity"
+      >
+        Enquire Now
+      </Link>
     </div>
   </motion.div>
 );

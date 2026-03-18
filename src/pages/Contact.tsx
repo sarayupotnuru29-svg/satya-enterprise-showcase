@@ -2,14 +2,16 @@ import { useState } from "react";
 import { Phone, Mail, MapPin, Instagram, Clock } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import PageHero from "@/components/PageHero";
+import { products } from "@/data/products";
 import contactBg from "@/assets/contact-bg.jpg";
 
 const Contact = () => {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", product: "", message: "" });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const mailto = `mailto:satyaenterprises1@outlook.com?subject=Inquiry from ${form.name}&body=${encodeURIComponent(form.message)}%0A%0AFrom: ${form.name} (${form.email})`;
+    const productLine = form.product ? `\nProduct Interest: ${form.product}` : "";
+    const mailto = `mailto:satyaenterprises1@outlook.com?subject=Inquiry from ${form.name}&body=${encodeURIComponent(form.message + productLine)}%0A%0AFrom: ${form.name} (${form.email})`;
     window.location.href = mailto;
   };
 
@@ -95,6 +97,19 @@ const Contact = () => {
                       className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground font-body text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
                       placeholder="you@example.com"
                     />
+                  </div>
+                  <div>
+                    <label className="block font-body text-sm font-medium text-foreground mb-1.5">Select Product</label>
+                    <select
+                      value={form.product}
+                      onChange={(e) => setForm({ ...form, product: e.target.value })}
+                      className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground font-body text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                    >
+                      <option value="">-- Choose a product (optional) --</option>
+                      {products.map((p) => (
+                        <option key={p.name} value={p.name}>{p.name}</option>
+                      ))}
+                    </select>
                   </div>
                   <div>
                     <label className="block font-body text-sm font-medium text-foreground mb-1.5">Message</label>

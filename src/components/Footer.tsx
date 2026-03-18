@@ -12,7 +12,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <img src={logo} alt="Satya Enterprises" className="h-12 w-12 object-contain" />
+              <img src={logo} alt="Satya Enterprises" className="h-14 w-14 object-contain" />
               <span className="font-display text-lg font-bold">Satya Enterprises</span>
             </div>
             <p className="text-primary-foreground/80 text-sm leading-relaxed">
@@ -24,7 +24,7 @@ const Footer = () => {
           <div>
             <h4 className="font-display text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {[["Home", "/"], ["About Us", "/about"], ["Products", "/products"], ["Gallery", "/gallery"], ["Contact", "/contact"]].map(([label, path]) => (
+              {[["Home", "/"], ["About Us", "/about"], ["Products", "/products"], ["Contact", "/contact"], ["Enquiry", "/enquiry"]].map(([label, path]) => (
                 <li key={path}>
                   <Link to={path} className="text-primary-foreground/80 hover:text-secondary text-sm transition-colors">
                     {label}
@@ -39,7 +39,11 @@ const Footer = () => {
             <h4 className="font-display text-lg font-semibold mb-4">Our Products</h4>
             <ul className="space-y-2 text-sm text-primary-foreground/80">
               {["Maize", "Rice", "Wheat", "Jowar", "Ragi", "Red Chilli", "Pulses & Grains"].map((p) => (
-                <li key={p}>{p}</li>
+                <li key={p}>
+                  <Link to={`/enquiry?product=${encodeURIComponent(p)}`} className="hover:text-secondary transition-colors">
+                    {p}
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
