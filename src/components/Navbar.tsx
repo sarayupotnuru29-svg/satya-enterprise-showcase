@@ -7,7 +7,6 @@ const navLinks = [
   { label: "Home", path: "/" },
   { label: "About Us", path: "/about" },
   { label: "Products", path: "/products" },
-  { label: "Gallery", path: "/gallery" },
   { label: "Contact", path: "/contact" },
 ];
 
@@ -19,7 +18,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
       <div className="container mx-auto flex items-center justify-between h-20 px-4">
         <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="Satya Enterprises Logo" className="h-14 w-14 object-contain" />
+          <img src={logo} alt="Satya Enterprises Logo" className="h-16 w-16 object-contain" />
           <span className="font-display text-xl font-bold text-primary hidden sm:block">
             Satya Enterprises
           </span>
