@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowUp, Mail, Phone, MapPin, Instagram } from "lucide-react";
+import { ArrowUp, Mail, Phone, MapPin, Instagram, Heart } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
@@ -76,10 +76,31 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/20 mt-12 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="border-t border-primary-foreground/20 mt-12 pt-6 flex flex-col md:flex-row items-center justify-between gap-6">
+          {/* Copyright */}
           <p className="text-sm text-primary-foreground/60">
             © {new Date().getFullYear()} Satya Enterprises. All rights reserved.
           </p>
+
+          {/* Attribution */}
+          <div className="flex justify-center items-center gap-1 text-sm text-primary-foreground/80">
+            Made with <Heart className="inline h-4 w-4 text-red-500 mx-1 fill-red-500" /> by
+            <a
+              href="https://staffarc.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-orange-400 hover:text-orange-300 font-medium transition-colors"
+            >
+              <img
+                src="https://www.staffarc.in/images/Staffarc-logo.png"
+                alt="StaffArc logo"
+                className="h-5 w-5 object-contain"
+              />
+              StaffArc
+            </a>
+          </div>
+
+          {/* Scroll to Top */}
           <button
             onClick={scrollToTop}
             className="flex items-center gap-2 bg-secondary text-secondary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
